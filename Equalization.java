@@ -74,7 +74,7 @@ public class Equalization {
 		}
 			for(int i=0;i<256;i++)
 				output[(int)cumu_prob[i]] = output[(int)cumu_prob[i]]+ input[i];
-			return output;
+		return output;
 	}
 	
 
@@ -88,12 +88,6 @@ public class Equalization {
 				double r = yy + 1.403*(cr-128); //min =-179.584 max = 433.181
 				double g = yy -0.344*(cb-128) -0.714*(cr-128); // min = -134.366 max = 390.424
 				double b = yy + 1.773*(cb-128); //min  = -226.944 max = 480.171
-				
-				//Scaling
-//				r = (255 -(0))*(r-(-179.584))/(433.181+179.584) - 0;
-//				g = (255 -(0))*(g-(-134.366))/(390.424 - (-134.366)) - 0;
-//				b = (255 -(0))*(b-(-226.944))/(480.171 - (-226.944)) - 0;
-		
 				
 				newImage.getRaster().setSample(x, y, 0, r);
 				newImage.getRaster().setSample(x, y, 1, g);
@@ -126,8 +120,6 @@ public class Equalization {
 			}
 			
 		}
-
-		
 		return newImage;
 	}
 
