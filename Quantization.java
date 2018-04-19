@@ -20,20 +20,20 @@ public class Quantization {
 		Scanner sc= new Scanner(System.in);
 		
 		JFrame frame = new JFrame();
-        frame.getContentPane().setLayout(new FlowLayout());
-        try {
-        BufferedImage original = inputImage();
-        System.out.println("Enter No of bits per channel");
- 
-        int channel = sc.nextInt();
-        frame.getContentPane().add(new JLabel(new ImageIcon(original)));
-        frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImage(original,channel))));
-        frame.setVisible(true);
-        } 
-        catch (Exception e) {
-        	e.printStackTrace();
-        }
-		
+		frame.getContentPane().setLayout(new FlowLayout());
+		try {
+			BufferedImage original = inputImage();
+			System.out.println("Enter No of bits per channel");
+
+			int channel = sc.nextInt();
+			frame.getContentPane().add(new JLabel(new ImageIcon(original)));
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImage(original,channel))));
+			frame.setVisible(true);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	public static BufferedImage quantizeImage(BufferedImage image, int num) {
@@ -153,6 +153,6 @@ public class Quantization {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+       		return input;
 	}
 }
