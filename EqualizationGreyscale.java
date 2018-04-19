@@ -75,11 +75,11 @@ public class EqualizationGreyscale {
 	}
 	
 	public static boolean saveAsJPG(BufferedImage b,String name) throws IOException  {	
-		File outputfile = new File(name+".png");
-		 RenderedImage rendImage = b;
-			return ImageIO.write(rendImage, "png", outputfile);
+       		File outputfile = new File(name+".png");
+	        RenderedImage rendImage = b;
+	        return ImageIO.write(rendImage, "png", outputfile);
 		
-		}
+	}
 
 	public static int[] createHistogram(BufferedImage b ) {
 		int[] output = new int[256];
@@ -104,7 +104,7 @@ public class EqualizationGreyscale {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+        	return input;
 	}
 	
 }
