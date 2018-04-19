@@ -33,7 +33,7 @@ public class FFT {
 		for(int x=0;x<n;x++) {
 			for(int y=0;y<n;y++) {
 				try {
-				imagedata[x][y] = new complex(in.getRaster().getSampleDouble(x, y, 0));
+					imagedata[x][y] = new complex(in.getRaster().getSampleDouble(x, y, 0));
 				}
 				catch(Exception e) {
 					imagedata[x][y]=new complex(0);
@@ -44,30 +44,30 @@ public class FFT {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
 		switch(input) {
-		case 1:
-			System.out.println("Enter normalized cut-off Radius ");
-			double radius1 = sc.nextDouble();
-			System.out.println("Enter order of filter");
-			double order = sc.nextDouble();
-			display("Before Filter");
-			applyButterworthLowPass(radius1, order);
-			display("After Filter");
-			break;
-		case 2:
-			System.out.println("Enter normalized cut-off Radius ");
-			double radius2 = sc.nextDouble();
-			display("Before Filter");
-			applyGaussianHighPass(radius2);
-			display("After Filter");
-			break;
-		case 3:
-			displayAverage("Before Filter");
-			applyAveragingFilter();
-			displayAverage("After Filter");
-			break;
-		default:
-			break;
-		
+			case 1:
+				System.out.println("Enter normalized cut-off Radius ");
+				double radius1 = sc.nextDouble();
+				System.out.println("Enter order of filter");
+				double order = sc.nextDouble();
+				display("Before Filter");
+				applyButterworthLowPass(radius1, order);
+				display("After Filter");
+				break;
+			case 2:
+				System.out.println("Enter normalized cut-off Radius ");
+				double radius2 = sc.nextDouble();
+				display("Before Filter");
+				applyGaussianHighPass(radius2);
+				display("After Filter");
+				break;
+			case 3:
+				displayAverage("Before Filter");
+				applyAveragingFilter();
+				displayAverage("After Filter");
+				break;
+			default:
+				break;
+
 		}
 	}
 
@@ -116,7 +116,7 @@ public class FFT {
 			for(int y=0;y<imagedata.length;y++) {
 				inverse.getRaster().setSample(x,y, 0, imagedata[x][y].amplitude());
 				if(fourier!=null)
-				fourierdata.getRaster().setSample(x,y, 0, Math.log(fourier[x][y].amplitude()+1)*scale);
+					fourierdata.getRaster().setSample(x,y, 0, Math.log(fourier[x][y].amplitude()+1)*scale);
 				
 			}
 		}
@@ -161,12 +161,12 @@ public class FFT {
 
         complex[] out = new complex[n];
         for (int k = 0; k < n/2; k++) {
-        	double theta=2 * k * Math.PI / n;
+       		double theta=2 * k * Math.PI / n;
         	if(direction==1)
         		theta = -1*theta;
-            complex tmp = new complex(Math.cos(theta), Math.sin(theta));
-            out[k]       = evenout[k].add(tmp.multiply(oddout[k]));
-            out[k + n/2] = evenout[k].minus(tmp.multiply(oddout[k]));
+                complex tmp = new complex(Math.cos(theta), Math.sin(theta));
+                out[k]       = evenout[k].add(tmp.multiply(oddout[k]));
+                out[k + n/2] = evenout[k].minus(tmp.multiply(oddout[k]));
         }
         return out;
     }
@@ -319,7 +319,7 @@ public class FFT {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-	    return input;
+	        return input;
 	}
 	
 	
