@@ -31,42 +31,42 @@ import javax.swing.JPanel;
     
 
     public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
-		JFrame frame = new JFrame();
-                frame.getContentPane().setLayout(new FlowLayout());
-                try {
-			BufferedImage original =inputImage();
-			System.out.println("Enter No.of bits per channel of color (range - 1 to 7)");
-			int input = sc.nextInt();
-			switch(input) {
-			    case 1:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(OnebitPerChannel,original))));
-				break;
-			    case 2:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(TwobitPerChannel,original))));
-			       break;
-			    case 3:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(ThreebitPerChannel,original))));
-			       break;
-			    case 4:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(FourbitPerChannel,original))));
-			       break;
-			    case 5:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(FivebitPerChannel,original))));
-				break;
-			    case 6:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(SixbitPerChannel,original))));
-				break;
-			    case 7:
-				frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(SevenbitPerChannel,original))));
-				break;
+	Scanner sc= new Scanner(System.in);
+	JFrame frame = new JFrame();
+	frame.getContentPane().setLayout(new FlowLayout());
+	try {
+		BufferedImage original =inputImage();
+		System.out.println("Enter No.of bits per channel of color (range - 1 to 7)");
+		int input = sc.nextInt();
+		switch(input) {
+		    case 1:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(OnebitPerChannel,original))));
+			break;
+		    case 2:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(TwobitPerChannel,original))));
+		       break;
+		    case 3:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(ThreebitPerChannel,original))));
+		       break;
+		    case 4:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(FourbitPerChannel,original))));
+		       break;
+		    case 5:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(FivebitPerChannel,original))));
+			break;
+		    case 6:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(SixbitPerChannel,original))));
+			break;
+		    case 7:
+			frame.getContentPane().add(new JLabel(new ImageIcon( quantizeImageColor(SevenbitPerChannel,original))));
+			break;
 
-			}
-			frame.setVisible(true);
-                } 
-                catch (Exception e) {
-                	e.printStackTrace();
-                }
+		}
+		frame.setVisible(true);
+	} 
+	catch (Exception e) {
+		e.printStackTrace();
+	}
                 
     }
     
@@ -84,12 +84,12 @@ import javax.swing.JPanel;
     }
 
 
-	public static BufferedImage inputImage() throws IOException {
-		System.out.println("Enter path of the input image");
-		Scanner sc= new Scanner(System.in);
-		String path = sc.next();
-		BufferedImage input = ImageIO.read(new File(path));
-        	return input;
-	}
+    public static BufferedImage inputImage() throws IOException {
+	System.out.println("Enter path of the input image");
+	Scanner sc= new Scanner(System.in);
+	String path = sc.next();
+	BufferedImage input = ImageIO.read(new File(path));
+	return input;
+    }
  }
 
