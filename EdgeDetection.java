@@ -27,30 +27,28 @@ public class EdgeDetection {
 
 		originalImage.getContentPane().setLayout(new FlowLayout());
 		xgrad.getContentPane().setLayout(new FlowLayout());
-        ygrad.getContentPane().setLayout(new FlowLayout());
-        edges.getContentPane().setLayout(new FlowLayout());
-        
-        
-        try {
-        BufferedImage original = inputImage();
-        BufferedImage gray = turnGrayS(original);    
-        BufferedImage gradx = gradientX(gray);
-        BufferedImage grady= gradientY(gray);
-        BufferedImage edge = finalEdge(original);
-                
-        originalImage.getContentPane().add(new JLabel(new ImageIcon(original)));
-        edges.getContentPane().add(new JLabel(new ImageIcon(edge)));
-        ygrad.getContentPane().add(new JLabel(new ImageIcon(grady)));
-        xgrad.getContentPane().add(new JLabel(new ImageIcon(gradx)));
-      
-        edges.setVisible(true);
-        } 
-        catch (Exception e) {
-        	e.printStackTrace();
-        }
-       
+		ygrad.getContentPane().setLayout(new FlowLayout());
+		edges.getContentPane().setLayout(new FlowLayout());
 
-		
+
+		try {
+			BufferedImage original = inputImage();
+			BufferedImage gray = turnGrayS(original);    
+			BufferedImage gradx = gradientX(gray);
+			BufferedImage grady= gradientY(gray);
+			BufferedImage edge = finalEdge(original);
+
+			originalImage.getContentPane().add(new JLabel(new ImageIcon(original)));
+			edges.getContentPane().add(new JLabel(new ImageIcon(edge)));
+			ygrad.getContentPane().add(new JLabel(new ImageIcon(grady)));
+			xgrad.getContentPane().add(new JLabel(new ImageIcon(gradx)));
+
+			edges.setVisible(true);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	public static BufferedImage gradientX(BufferedImage image) {
@@ -61,7 +59,7 @@ public class EdgeDetection {
 				float tmp = (image.getRaster().getSample(x-1,y-1,0)*gx[0][0])+(image.getRaster().getSample(x,y-1,0)*gx[0][1])+(image.getRaster().getSample(x+1,y-1,0)*gx[0][2])+(image.getRaster().getSample(x-1,y,0)*gx[1][0])+(image.getRaster().getSample(x,y,0)*gx[1][1])+(image.getRaster().getSample(x+1,y,0)*gx[1][2])+(image.getRaster().getSample(x-1,y+1,0)*gx[2][0])+(image.getRaster().getSample(x,y+1,0)*gx[2][1])+(image.getRaster().getSample(x+1,y+1,0)*gx[2][2]); 
 				if(tmp<0)
 					tmp=tmp*-1;
-			output.getRaster().setSample(x, y, 0,(int)(tmp*scale));
+				output.getRaster().setSample(x, y, 0,(int)(tmp*scale));
 			}
 		}
 		return output;
@@ -114,7 +112,7 @@ public class EdgeDetection {
 
 			        int grayLevel = (r + g + b) / 3;
 			        int gray = (grayLevel << 16) + (grayLevel << 8) + grayLevel;
-					out.getRaster().setSample(x, y, 0,gray);
+				out.getRaster().setSample(x, y, 0,gray);
 
 			     }
 		return out;
@@ -125,7 +123,7 @@ public class EdgeDetection {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+       		return input;
 	}
 
 	
