@@ -31,16 +31,16 @@ public class FindDistance {
 				if(image2.getRGB(x,y)!=pImage.getRGB(x, y)) //pixel in image 2 which is different then it's parent image i.e. background
 				{
 					if(xfinalpt<x) { //this verifies that the pixel we found is the farthest pixel in x direction in image2 that is not same as the background
-					 yfinal=y;
+						yfinal=y;
 						//Thus xfinal gives us the end point of car in image2
-					xfinalpt=x;
+						xfinalpt=x;
 					}
 				}
 				if(image1.getRGB(x,y)!=pImage.getRGB(x, y))	//pixel in image 2 which is different then it's parent image i.e. background
 				{
 					if(xinitialpt<x) {	//this verifies that the pixel we found is the farthest pixel in x direction in image1 that is not same as the background				
-					xinitialpt=x;		//Thus xinitial gives us the end point of car in image1
-					yinitial=y;
+						xinitialpt=x;		//Thus xinitial gives us the end point of car in image1
+						yinitial=y;
 					}
 				}
 			}	
@@ -86,7 +86,7 @@ public class FindDistance {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+       		return input;
 	}
 	
 }
