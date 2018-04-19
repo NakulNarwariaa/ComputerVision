@@ -31,7 +31,7 @@ public class Resampling extends JPanel {
 			if(y%k!=0)
 				continue;
 			for (x = 0; x < newImage.getWidth(); x++)
-				{
+			{
 			    if(x%k==0)
 				{
 					x1=x;
@@ -49,30 +49,30 @@ public class Resampling extends JPanel {
 				}
 				newImage.getRaster().setSample(x, y, b, x_y1);;
 			    }
-			}
+		      }
 		}
 
-			 for (y = 0; y < newImage.getHeight(); y++)        //Finding pixel value between columns with the help of previously found row pixels.
-				{  
-			    for (x = 0; x < newImage.getWidth(); x++)
-				{
-				if(y%k==0) //since original pixels need to be kept intact, original column pixels are to be escaped by this condition.
-				{
-				    y1=y;
-				    y2=y+k;
-				    break;
-				}
-				for(int b=0;b<3;b++)
-				{
-					if(y+1>=newImage.getHeight()-1)    //handling pixels with only one neighbour by copying neighbour's pixel value
-						x_y = ((y2 - y)/(y2 - y1))*fixRGB(newImage,x, (int) y1, b) + ((y - y1)/(y2 - y1))*fixRGB(newImage,x, (int) y1,b);
-					else
-						x_y = ((y2 - y)/(y2 - y1))*fixRGB(newImage,x, (int) y1,b) + ((y - y1)/(y2 - y1))*fixRGB(newImage,x, (int)y2,b);
-					newImage.getRaster().setSample(x, y, b, x_y);
-				}
-			  }
-		       } 
-		       return newImage;
+		for (y = 0; y < newImage.getHeight(); y++)        //Finding pixel value between columns with the help of previously found row pixels.
+		{  
+        	    for (x = 0; x < newImage.getWidth(); x++)
+       		    {
+			if(y%k==0) //since original pixels need to be kept intact, original column pixels are to be escaped by this condition.
+			{
+			    y1=y;
+			    y2=y+k;
+			    break;
+			}
+			for(int b=0;b<3;b++)
+			{
+				if(y+1>=newImage.getHeight()-1)    //handling pixels with only one neighbour by copying neighbour's pixel value
+					x_y = ((y2 - y)/(y2 - y1))*fixRGB(newImage,x, (int) y1, b) + ((y - y1)/(y2 - y1))*fixRGB(newImage,x, (int) y1,b);
+				else
+					x_y = ((y2 - y)/(y2 - y1))*fixRGB(newImage,x, (int) y1,b) + ((y - y1)/(y2 - y1))*fixRGB(newImage,x, (int)y2,b);
+				newImage.getRaster().setSample(x, y, b, x_y);
+			}
+		  }
+	      } 
+	      return newImage;
 	}
 
 	public static int fixRGB(BufferedImage b,int x, int y,int band) {
