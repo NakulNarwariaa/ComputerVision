@@ -20,28 +20,28 @@ public class SaltAndPepper {
 
 		JFrame salted = new JFrame("Image with salt and pepper noise");
 		JFrame median = new JFrame("Noise removed with median filter");
-        salted.getContentPane().setLayout(new FlowLayout());
-        median.getContentPane().setLayout(new FlowLayout());
-       
-        try {
-        salted.setSize(800, 800);
-		median.setSize(800, 800);
-		
-		BufferedImage original =inputImage();
-        
-        BufferedImage newImage = addSaltAndPepper(original);
-        BufferedImage afterFilter = medianFilter(newImage);
-        
-        salted.getContentPane().add(new JLabel(new ImageIcon(newImage)));
-        median.getContentPane().add(new JLabel(new ImageIcon(afterFilter)));
-        
-        salted.setVisible(true);
-        median.setVisible(true);
-        } 
-        catch (Exception e) {
-        	e.printStackTrace();
-        }
-		
+		salted.getContentPane().setLayout(new FlowLayout());
+		median.getContentPane().setLayout(new FlowLayout());
+
+		try {
+			salted.setSize(800, 800);
+			median.setSize(800, 800);
+
+			BufferedImage original =inputImage();
+
+			BufferedImage newImage = addSaltAndPepper(original);
+			BufferedImage afterFilter = medianFilter(newImage);
+
+			salted.getContentPane().add(new JLabel(new ImageIcon(newImage)));
+			median.getContentPane().add(new JLabel(new ImageIcon(afterFilter)));
+
+			salted.setVisible(true);
+			median.setVisible(true);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	public static BufferedImage addSaltAndPepper(BufferedImage img) {
@@ -88,7 +88,8 @@ public class SaltAndPepper {
 				image.getRaster().setSample(x,y,1,img.getRaster().getSample(x, y, 1));
 				image.getRaster().setSample(x,y,2,img.getRaster().getSample(x, y, 2));
 			}
-		}		for(int y=1;y<image.getHeight()-1;y++) {
+		}
+		for(int y=1;y<image.getHeight()-1;y++) {
 			for(int x=1;x<image.getWidth()-1;x++) {
 				int []arr=new int[9];
 				arr=image.getRaster().getSamples(x-1, y-1, 3, 3, 0, arr);
@@ -128,7 +129,7 @@ public class SaltAndPepper {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+       		return input;
 	}
 	
 }
