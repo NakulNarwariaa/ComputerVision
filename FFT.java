@@ -194,7 +194,7 @@ public class FFT {
 			
 			for(int y=0;y<data.length;y++) {
 				if(direction==1)
-				row[y] = data[x][y].multiply(Math.pow(-1, x+y));
+					row[y] = data[x][y].multiply(Math.pow(-1, x+y));
 				else
 					row[y] = data[x][y];
 			}
@@ -218,11 +218,11 @@ public class FFT {
 			}
 		}
 		if(direction==1) {
-		for(int x=0;x<out.length;x++) {
-			for(int y=0;y<out.length;y++) {
-				fourier[x][y] = out[x][y];
+			for(int x=0;x<out.length;x++) {
+				for(int y=0;y<out.length;y++) {
+					fourier[x][y] = out[x][y];
+				}
 			}
-		}
 		}
 		else
 		{
