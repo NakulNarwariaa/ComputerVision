@@ -3,34 +3,31 @@ public class JPEGCompression {
 
 	public static void main(String []args) {
 		
-	double[][] data = {{56,45,51,66,70,61,64,73},{63,59,66,90,109,85,69,72},{62,59,68,103,144,104,66,73},{63,58,71,132,134,106,70,69},{65,61,68,114,116,82,68,70},{79,65,60,67,77,68,58,75},{85,71,54,59,55,61,65,73},{87,79,69,58,65,66,78,94}};
-	data = multipleOfEight(data);		
-	int tmp = (data[0].length/8)*(data.length/8);
-	int[][] n = new int[tmp][];
-	int index=0;
-		for(int y=0;y<data.length/8;y++) {
-			for(int x=0;x<data[0].length/8;x++) {
-				double[][] sample = new double[8][8];
-				for(int i=0;i<8;i++ ) {
-					for(int j=0;j<8;j++) {
-						sample[i][j] = data[i + y*8][j + x*8];
-					}	
+		double[][] data = {{56,45,51,66,70,61,64,73},{63,59,66,90,109,85,69,72},{62,59,68,103,144,104,66,73},{63,58,71,132,134,106,70,69},{65,61,68,114,116,82,68,70},{79,65,60,67,77,68,58,75},{85,71,54,59,55,61,65,73},{87,79,69,58,65,66,78,94}};
+		data = multipleOfEight(data);		
+		int tmp = (data[0].length/8)*(data.length/8);
+		int[][] n = new int[tmp][];
+		int index=0;
+			for(int y=0;y<data.length/8;y++) {
+				for(int x=0;x<data[0].length/8;x++) {
+					double[][] sample = new double[8][8];
+					for(int i=0;i<8;i++ ) {
+						for(int j=0;j<8;j++) {
+							sample[i][j] = data[i + y*8][j + x*8];
+						}	
+					}
+					n[index]= compute(sample);
 				}
-				n[index]= compute(sample);
 			}
-		}
-		
-		
-	for(int i=0;i<n.length;i++)
+
+
+		for(int i=0;i<n.length;i++)
 		{
-		System.out.println("1D sequence for "+i+" block");
-		
-		for(int j=0;j<n[i].length;j++)
-		
-			{
-			
-			System.out.print(n[i][j]+" ");
-			}
+			System.out.println("1D sequence for "+i+" block");
+
+			for(int j=0;j<n[i].length;j++)	
+				System.out.print(n[i][j]+" ");
+
 		}
 	}
 	
@@ -194,10 +191,10 @@ public class JPEGCompression {
     {
        double qt[][] = {{16,11,10,16,24,40,51,61},{12,12,14,19,26,58,60,55},{14,13,16,24,40,57,69,56},{14,17,22,29,51,87,80,62},{18,22,37,56,68,109,103,77},{24,35,55,64,81,104,113,92},{49,64,78,87,103,121,120,101},{72,92,95,98,112,110,103,99}};
        for(int i=0;i<8;i++)
-      	 for(int j=0;j<8;j++){
+          for(int j=0;j<8;j++){
 		  data[i][j]=data[i][j]/qt[i][j];
 	  	  data[i][j] = Math.round(data[i][j]);
-       }
+       	  }
       return data; 
     }
 
