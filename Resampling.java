@@ -82,23 +82,23 @@ public class Resampling extends JPanel {
 	}
 
 	public static void main(String[] args) throws Throwable {
-	      JFrame frame = new JFrame();
-	      frame.getContentPane().setLayout(new FlowLayout());
-	      BufferedImage buffer = inputImage();
-	      Scanner sc= new Scanner(System.in);
-	      System.out.println("Enter New Scale of the Image (>1) ");
-	      int scale = sc.nextInt();
-	      frame.getContentPane().add(new JLabel(new ImageIcon(buffer)));
-	      frame.getContentPane().add(new JLabel(new ImageIcon(createImageWithText(scale,buffer))));
-	      frame.setVisible(true);
+		JFrame frame = new JFrame();
+		frame.getContentPane().setLayout(new FlowLayout());
+		BufferedImage buffer = inputImage();
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter New Scale of the Image (>1) ");
+		int scale = sc.nextInt();
+		frame.getContentPane().add(new JLabel(new ImageIcon(buffer)));
+		frame.getContentPane().add(new JLabel(new ImageIcon(createImageWithText(scale,buffer))));
+		frame.setVisible(true);
        }
 
-       public static BufferedImage inputImage() throws IOException {
+	public static BufferedImage inputImage() throws IOException {
 		System.out.println("Enter path of the input image");
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-	        return input;
+		return input;
 	}
 
 
