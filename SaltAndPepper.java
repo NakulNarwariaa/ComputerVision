@@ -74,8 +74,8 @@ public class SaltAndPepper {
 				 image.getRaster().setSample(x, y, 1, 255);
 				 image.getRaster().setSample(x, y, 2, 255);
 				 }
-		 }
-	return image;	
+		}
+		return image;	
 	}
 
 	
