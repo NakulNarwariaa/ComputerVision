@@ -21,7 +21,8 @@ public class EqualizationGreyscale {
 		BufferedImage buffer = inputImage();
 		int []output = equalizeHistogram(buffer); //equalized histogram
 		BufferedImage bi = equalizeImage(buffer); //equalized image
-		//for displaying output images on a frame
+		
+		//For displaying output images on a frame
 		JFrame frame = new JFrame();
 		frame.getContentPane().setLayout(new FlowLayout());
 		frame.getContentPane().add(new JLabel(new ImageIcon(buffer)));
@@ -50,9 +51,10 @@ public class EqualizationGreyscale {
 			if(cumu_prob[i] - (int)cumu_prob[i]>=0.5)
 				cumu_prob[i] = cumu_prob[i] +0.5;			
 		}
-			for(int i=0;i<256;i++)
-				output[(int)cumu_prob[i]] = output[(int)cumu_prob[i]]+ input[i];
-			return output;
+		for(int i=0;i<256;i++)
+			output[(int)cumu_prob[i]] = output[(int)cumu_prob[i]]+ input[i];
+		
+		return output;
 	}
 	
 	public static BufferedImage equalizeImage(BufferedImage bi) throws IOException{
