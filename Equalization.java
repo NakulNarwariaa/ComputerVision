@@ -72,8 +72,10 @@ public class Equalization {
 			if(cumu_prob[i] - (int)cumu_prob[i]>=0.5)
 				cumu_prob[i] = cumu_prob[i] +0.5;			
 		}
-			for(int i=0;i<256;i++)
-				output[(int)cumu_prob[i]] = output[(int)cumu_prob[i]]+ input[i];
+		
+		for(int i=0;i<256;i++)
+			output[(int)cumu_prob[i]] = output[(int)cumu_prob[i]]+ input[i];
+		
 		return output;
 	}
 	
@@ -146,6 +148,6 @@ public class Equalization {
 		Scanner sc= new Scanner(System.in);
 		String path = sc.next();
 		BufferedImage input = ImageIO.read(new File(path));
-        return input;
+        	return input;
 	}
 }
